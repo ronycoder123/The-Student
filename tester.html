@@ -1,0 +1,365 @@
+<html>
+    <title id="title"></title>
+    <style>
+        body{
+            background-image: url('https://w.wallhaven.cc/full/49/wallhaven-49gdrd.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+           background-attachment: fixed;
+            background-position: center;
+        }
+        .parent{
+            display: flex;
+            gap:10px;
+            justify-content: space-between;
+            width:100%;
+        }
+         .btn{
+            transition-duration: 0.2s;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            background:transparent;
+            border-radius:10px;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            padding:20px;
+            font-size:medium;
+            position:relative;
+        }
+         .btn_holder{
+            display: flex;
+            align-items: center;
+        }
+        .cont{
+            display: flex;
+            gap:10px;
+            height: fit-content;
+        }
+        .title_text{
+            backdrop-filter: blur(10px);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color:rgb(165, 85, 32);
+            display: inline-block;
+            font-size: 160%;
+            padding:5px;
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 20px;;
+            width:fit-content;
+        }
+        .btn_holder{
+            display: flex;
+            align-items: center;
+        }
+        .btn_check:hover{
+            border-color: rgb(16, 97, 219);
+        }
+        .btn:hover{
+            transform: translateY(-10px);
+              border:2px solid rgb(16, 97, 219);
+        }
+        .text_reg{
+           color:rgb(230, 216, 216);
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+
+        }
+        .container{
+            animation-duration: 2s;
+            backdrop-filter: blur(20px);
+            border-radius:10px;
+            border:2px solid black;
+            width:fit-content;
+            display:block;
+            margin-right: auto;
+            margin-left: auto;
+            animation-fill-mode:forwards;
+            background-color:rgba(34, 32, 32,0.5);
+        }
+        .error_btn_area{
+            display: flex;
+            gap:10px;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn_cont{
+            cursor: pointer;
+            animation-name:none;
+            animation-duration:0.5s;
+            animation-iteration-count: 2;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in;
+            display: block;
+            padding:10px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border:2px solid rgb(165, 85, 32);
+        }
+        .img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .text_btn{
+             color:white;
+           font-family:'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        .btn_cont:hover{
+            border-color: rgb(16, 97, 219);
+            transform:translateY(-10px)
+        }
+        .btn_cont_correct{
+            cursor:pointer;
+            animation-name:none;
+            animation-duration: 0.5s;
+            animation-iteration-count: 2;
+           width:fit-content; margin-right: auto;margin-left:auto;
+           transition-duration: 0.2s;
+            transition-timing-function: ease-in;
+            display: block;
+            padding:10px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border:2px solid rgb(165, 85, 32);
+        }
+        .btn_cont_correct:hover{
+            border-color:green;
+            transform: translateY(-10px);
+        }
+        @keyframes selected{
+            50%{
+                background-color:rgb(165, 85, 32);
+            }
+        }
+         @keyframes correct{
+            50%{
+                background-color:green;
+            }
+        }
+        .main_container{
+            backdrop-filter: blur(20px);
+            border:2px solid rgb(165, 85, 32);
+            padding:10px;
+            width:fit-content;
+            border-radius: 10px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .footer_contain{
+            display:flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <body>
+        <div class="parent">
+        <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div>
+        <div class="container">
+        <h1 class="text_reg" > Measure your <b style="color:rgb(165, 85, 32); ">progress </b>, not your <b style="color: rgb(16, 97, 219);">perfection. </b></h1>
+    </div>
+        <div class="btn_holder">
+        <button class="btn" id="return">Return To Menu</button>
+        </div>
+        </div>
+        <br>
+        <br>
+    <audio autoplay hidden id="aud"></audio>
+    <div class="main_container">
+    <h2 class="text_reg">Got A Question Correct ? ,Click Below :</h2>
+    <div id="correct" class="btn_cont_correct" id="correct">
+            <img  class="img" src="https://img.icons8.com/?size=48&id=11849&format=png" alt="">
+        <h2 class="text_reg" style="font-family: 'Courier New', Courier, monospace;">Correct Answer</h2>
+        </div>
+    <br>
+    <hr>
+    <h2 class="text_reg">Choose Your Error Type Here:</h2>
+    <div class="error_btn_area">
+        <div class="btn_cont" id="calc">
+            <img class="img" src="https://img.icons8.com/?size=50&id=22442&format=png" alt="">
+        <h2 class="text_btn">Calculation Error</h2>
+        </div>
+
+        <div class="btn_cont" id="silly">
+            <img class="img" src="https://img.icons8.com/?size=50&id=45967&format=png" alt="">
+        <h2 class="text_btn">Silly Mistake</h2>
+        </div>
+
+        <div class="btn_cont" id="concept">
+            <img class="img" src="https://img.icons8.com/?size=48&id=s73zgwOqimoT&format=png" alt="">
+        <h2 class="text_btn">Concept Issue</h2>
+        </div>
+
+        <div class="btn_cont" id="recall">
+            <img class="img" src="https://img.icons8.com/?size=50&id=2070&format=png" alt="">
+        <h2 class="text_btn">Recall Gaps</h2>
+        </div>
+    </div>
+    <hr>
+    <br>
+
+<div class="error_btn_area">
+    
+        <div class="btn_cont" id="misint">
+            <img class="img" src="https://img.icons8.com/?size=50&id=42763&format=png" alt="">
+        <h2 class="text_btn">Question Misinterpretation</h2>
+        </div>
+</div>
+<hr><br>
+     <div class="footer_contain">
+        <div id="delete_tag" class="btn_cont" style="position:absolute;left:0" >
+            <img src="https://img.icons8.com/?size=30&id=68138&format=png" alt="">
+        </div>
+     <button class="btn" id="stats">Check Your Statistics for This Chapter</button>
+    </div>
+    </div>
+    </body>
+    <script>
+        const cards = document.querySelectorAll(".btn_cont");
+        let audio = document.getElementById('aud')
+        let  correct = document.getElementById('correct')
+        let title = document.getElementById('title')
+        let count = document.getElementById('tag_counter')
+        let id_num = localStorage.getItem('id_number')
+        let tag_id = localStorage.getItem('tag_id')
+        let silly_btn = document.getElementById('silly')
+        let calc_btn = document.getElementById('calc')
+        let concept_btn = document.getElementById('concept')
+        let recall_btn = document.getElementById('recall')
+        let misint_btn = document.getElementById('misint')
+        //________________________________________________
+        let delete_tags = Number(localStorage.getItem('del_tag'+id_num+tag_id)) // this returns 0 eveytime until modified
+        let calc = Number(localStorage.getItem('calc'+id_num+tag_id))
+        let silly = Number(localStorage.getItem('silly'+id_num+tag_id))
+        let concept = Number(localStorage.getItem('concept'+id_num+tag_id))
+        let recall = Number(localStorage.getItem('recall'+id_num+tag_id))
+        let total = Number(localStorage.getItem('total'+id_num+tag_id))
+        let misint = Number(localStorage.getItem('misint'+id_num+tag_id))
+        let right = Number(localStorage.getItem('right'+id_num+tag_id))
+        //________________________________________________
+        //__________________________________________________
+title.textContent = localStorage.getItem('chapter'+id_num+tag_id)
+/*cards.forEach(card => {
+    card.onclick = function(){
+        card.style.animationName='selected'
+        audio.src='beep_wrong.mp3'
+        audio.play()
+        audio.volume=0.5;
+        card.addEventListener('animationend',()=>{
+            card.style.animationName='none'
+        })
+            
+        }
+    }
+); */
+correct.onclick=function(){
+    correct.style.animationName='correct'
+    right++;
+    total++;
+    localStorage.setItem('total'+id_num+tag_id,total)
+    localStorage.setItem('right'+id_num+tag_id,right)
+    audio.src='beep_correct.mp3'
+    audio.play()
+    correct.addEventListener('animationend',()=>{
+        correct.style.animationName='none'
+    })
+// this section for separate error logging btns! caution: localstorage handled here!!
+}
+calc_btn.onclick=function(){
+    calc++;
+    total++;
+    localStorage.setItem('total'+id_num+tag_id,total)
+    localStorage.setItem('calc'+id_num+tag_id,calc)
+    calc_btn.style.animationName='selected'
+        audio.src='beep_wrong.mp3'
+        audio.play()
+        audio.volume=0.5;
+        calc_btn.addEventListener('animationend',()=>{
+        calc_btn.style.animationName='none'
+    })
+}
+silly_btn.onclick=function(){
+    silly++;
+    total++;
+    localStorage.setItem('total'+id_num+tag_id,total)
+    localStorage.setItem('silly'+id_num+tag_id,silly)
+    silly_btn.style.animationName='selected'
+        audio.src='beep_wrong.mp3'
+        audio.play()
+        audio.volume=0.5;
+        silly_btn.addEventListener('animationend',()=>{
+        silly_btn.style.animationName='none'
+    })
+}
+recall_btn.onclick=function(){
+    recall++;
+    total++;
+    localStorage.setItem('total'+id_num+tag_id,total)
+    localStorage.setItem('recall'+id_num+tag_id,recall)
+    recall_btn.style.animationName='selected'
+        audio.src='beep_wrong.mp3'
+        audio.play()
+        audio.volume=0.5;
+        recall_btn.addEventListener('animationend',()=>{
+            recall_btn.style.animationName='none'
+    })
+}
+concept_btn.onclick=function(){
+    concept++;
+    total++;
+    localStorage.setItem('total'+id_num+tag_id,total)
+    localStorage.setItem('concept'+id_num+tag_id,concept)
+    concept_btn.style.animationName='selected'
+        audio.src='beep_wrong.mp3'
+        audio.play()
+        audio.volume=0.5;
+        concept_btn.addEventListener('animationend',()=>{
+        concept_btn.style.animationName='none'
+    })
+}
+
+misint_btn.onclick=function(){
+    misint++;
+    total++;
+    localStorage.setItem('total'+id_num+tag_id,total)
+    localStorage.setItem('misint'+id_num+tag_id,misint)
+    misint_btn.style.animationName='selected'
+        audio.src='beep_wrong.mp3'
+        audio.play()
+        audio.volume=0.5;
+        misint_btn.addEventListener('animationend',()=>{
+        misint_btn.style.animationName='none'
+    })
+}
+
+
+// end of section___________________________________________________________________________________
+        document.getElementById('return').onclick=function(){
+        window.location.href="error log.html"
+    }
+     document.getElementById('stats').onclick=function(){
+        window.location.href="live_statistics.html"
+    }
+    document.getElementById('delete_tag').onclick=function(){ // when 'delete tag' icon is pressed: deleted = 1(true)
+        delete_tags = 1
+        localStorage.setItem('del_tag'+id_num+tag_id,delete_tags);
+      //  console.log('tag delete pressed: '+delete_tags)
+
+        (localStorage.removeItem('calc'+id_num+tag_id));
+        (localStorage.removeItem('silly'+id_num+tag_id));
+        (localStorage.removeItem('concept'+id_num+tag_id));
+        (localStorage.removeItem('recall'+id_num+tag_id));
+        (localStorage.removeItem('total'+id_num+tag_id));
+        (localStorage.removeItem('misint'+id_num+tag_id));
+        (localStorage.removeItem('right'+id_num+tag_id));
+         localStorage.removeItem('chapter'+id_num+tag_id)
+
+        window.location.href="error log.html"
+    }
+    </script>
+</html>

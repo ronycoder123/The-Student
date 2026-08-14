@@ -1,0 +1,212 @@
+<html>
+    <style>
+        body{
+            background-image:url('https://w.wallhaven.cc/full/1j/wallhaven-1jlpq3.jpg');
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .title_text{
+            backdrop-filter: blur(10px);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color:rgb(165, 85, 32);
+            display: inline-block;
+            font-size: 160%;
+            padding:5px;
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 20px;;
+            width:fit-content;
+        }
+        .cont{
+            display: flex;
+            gap:10px;
+        }
+        .parent{
+            display: flex;
+            gap:10px;
+            justify-content: space-between;
+            width:100%;
+        }
+         .btn{
+            transition-duration: 0.2s;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            background:transparent;
+            border-radius:10px;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            padding:20px;
+            font-size:medium;
+            position:relative;
+        }
+         .btn_holder{
+            display: flex;
+            align-items: center;
+        }
+
+        .container{
+            animation-duration: 2s;
+            backdrop-filter: blur(10px);
+            border-radius:10px;
+            border:2px solid rgb(90, 88, 88);
+            width:70%;
+            display:block;
+            margin-right: auto;
+            margin-left: auto;
+            animation-fill-mode:forwards;
+            background-color:rgba(34, 32, 32,0.5);
+            animation-name:popup;
+            animation-timing-function: ease-in;
+        }
+        .text_reg{
+           color:rgb(207, 199, 199);
+            font-family:'Courier New', Courier, monospace;
+            text-align: center;
+            animation-fill-mode: forwards;
+            opacity: 0;
+            display: block;
+    
+        }
+        @keyframes fadein{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1
+            }
+        }
+        @keyframes popup{
+            from{
+                margin-top: 5vh;
+                opacity:0
+            }
+            to{
+                opacity:1
+            }
+        }
+        .normal_text_Q{ 
+            color:rgb(165, 85, 32);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding:10px
+        }
+        .normal_text_A{ 
+            color:rgb(240, 240, 240);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding:2px
+        }
+        .hr{
+            animation-fill-mode: forwards;
+            opacity: 0;
+            animation-duration: 1s;
+        }
+        .checkbox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap:10px;
+        }
+        .submit{
+            display: block;
+            margin-right:auto;
+            margin-left:auto;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            border:2px solid rgb(165, 85, 32);
+            background:transparent;
+            padding:15px;
+            border-radius:10px
+        }
+        .main_event{
+            opacity: 0;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+    </style>
+    <body>
+        <div class="parent">
+        <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div>
+        <div class="btn_holder">
+        <button class="btn" id="return">Return To Menu</button>
+        </div>
+        </div>
+        <div class="container" id="container">
+
+            <h1 id="greet" class="text_reg" style="animation-duration: 1s;">Hi There <i style="-webkit-text-stroke: 1px rgb(206, 206, 219);color:rgb(16, 97, 219)" id="name"></i></h1>
+            <h1 class="text_reg" id="title" style="font-family:'Courier New', Courier, monospace;animation-duration: 2s;">Let's Get You Started on Your <i style="color:rgb(165, 85, 32)"> Error Logs </i></h1>
+            <hr id="hr" class="hr">
+            <br>
+            <div class="main_event" id="main">
+            <h2 class="normal_text_Q">What Is This Supposed To Be? :</h2>
+            <h3 class="normal_text_A">∙ Problem solving is not just getting answers. It is in many ways, a <i style="color:rgb(16, 97, 219)">Skill Analysis</i>.</h3>
+        <h3 class="normal_text_A">∙ To be honest, making mistakes is what makes us human. But growing using them is quite a challenge.</h3>
+        <h3 class="normal_text_A">∙ The <i style="color:rgb(165, 85, 32)">Error Logs</i> is an environment designed to keep track of your mistakes and guide you to <i style="color:rgb(16, 97, 219)"> reduce them</i>.</h3>
+        <hr>
+        <h2 class="normal_text_Q">Why Log My Errors In The First Place? :</h2>
+        <h3 class="normal_text_A">∙ The same mistake can appear in completely different questions—even across different subjects.</h3>
+        <h3 class="normal_text_A">∙ If left unnoticed, it can cause those very mistakes trickle into your <i style="color:rgb(16, 97, 219)">tests and exams</i>.</h3>
+        <h3 class="normal_text_A">∙ Here, you can tag your errors as one of various types.<i style="color:rgb(16, 97, 219)"> You do the logging, we do the tracking </i>.</h3>
+    <hr>
+    <h2 class="normal_text_Q">Ok. But how do I Use This? </h2>
+    <h3 class="normal_text_A">∙ You first have to create a <i style="color:rgb(16, 97, 219)">subject tag </i> to log your errors for a specific chapter. </h3>
+     <h3 class="normal_text_A">∙ Then You will be able to see it in your<i style="color:rgb(165, 85, 32)"> tag base </i>.</h3>
+     <h3 class="normal_text_A">∙ Then just <i style="color:rgb(16, 97, 219)">click </i> on it and begin logging. <i style="color:rgb(165, 85, 32)"> It's easy with us by your side</i>.</h3>
+<hr>
+<div class="checkbox" >
+    <input type="checkbox" id="check" style="height:50px;width:50px;border-radius:10px;">
+    <h3 class="normal_text_A">Check this if You're Comfortable with Everything</h3>
+</div>
+<hr>
+<button id="embark" class="submit">Begin Your Journey</button>
+<br>
+    </div>
+        </div>
+        <script>
+            let id_num = localStorage.getItem('id_number')
+            let name = localStorage.getItem('User'+id_num)
+            let embark = document.getElementById('embark')
+            let check = document.getElementById('check')
+            document.getElementById('name').textContent= name+'!'
+            embark.disabled=true
+            if(embark.disabled==true){
+                document.getElementById('embark').style.backgroundColor='rgb(53,48,48)'
+            }
+            document.getElementById('container').addEventListener('animationend',()=>{
+                document.getElementById('greet').style.animationName='fadein'
+
+        })
+        
+        document.getElementById('greet').addEventListener('animationend',()=>{
+                document.getElementById('title').style.animationName='fadein';
+            })
+        document.getElementById('title').addEventListener('animationend',()=>{
+                document.getElementById('hr').style.animationName='fadein';
+            })
+        document.getElementById('hr').addEventListener('animationend',()=>{
+                document.getElementById('main').style.animationName='fadein';
+            })
+        check.addEventListener("change", () => {
+            document.getElementById('embark').disabled= !check.checked
+
+    if(!embark.disabled){
+        embark.textContent='lets go'
+        embark.style.background='transparent'
+        embark.onclick=function(){
+        window.location.href="error log.html"
+    }
+    
+}
+ if(!embark.disabled==false){
+    embark.textContent='Begin Your Journey'
+    embark.style.backgroundColor='rgb(53,48,48)'
+}
+});
+document.getElementById('return').onclick=function(){
+    window.location.href='main student interface.html'
+    localStorage.setItem('log'+id_num , '0')
+}
+        </script>
+    </body>
+</html>

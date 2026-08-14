@@ -1,0 +1,194 @@
+<html>
+    <title>Choose Your Study Tag | .The Student</title>
+    <style>
+        body{
+            background-image:url('https://w.wallhaven.cc/full/n6/wallhaven-n63r8x.jpg');
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .title_text{
+            backdrop-filter: blur(10px);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color:rgb(165, 85, 32);
+            display: inline-block;
+            font-size: 160%;
+            padding:5px;
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 20px;;
+            width:fit-content;
+        }
+        .create{
+            transition-duration: 0.2s;
+            position: fixed;
+            background:transparent;
+            font-size: large;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            border-radius:10px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            bottom:0;
+            width:50%;
+        }
+        .create:hover , .btn:hover{
+            transform: translateY(-10px);
+              border:2px solid rgb(16, 97, 219);
+        }
+        .text_reg{
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cont{
+            display: flex;
+            gap:10px;
+        }
+        .title{
+            backdrop-filter: blur(10px);
+            text-align: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+            color:rgb(230, 225, 221);
+            display: block;
+            font-size: 160%;
+            padding:10px;
+            border:2px solid rgb(165, 85, 32);
+            border-radius: 15px;;
+            width:fit-content;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .btn{
+            transition-duration: 0.2s;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            background:transparent;
+            border-radius:10px;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            padding:20px;
+            font-size:medium;
+            position:relative;
+        }
+        .parent{
+            display: flex;
+            gap:10px;
+            justify-content: space-between;
+            width:100%;
+        }
+        .btn_holder{
+            display: flex;
+            align-items: center;
+        }
+        .card{
+            display: flex;
+            gap:15px;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(12, 12, 12);
+            border-radius:10px;
+            flex-shrink: 0;
+        }
+        .img{
+            object-fit: contain;
+            padding-left: 20px;
+        }
+        .card_text{
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+        }   
+        .card_area{
+            overflow-y: auto;
+        }
+        .overflow_cont{
+           height:70vh;
+    overflow-y:auto;
+    padding-bottom:100px;
+    box-sizing:border-box;
+        }
+        </style>
+    <body id="body">
+        <div class="parent">
+        <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div>
+        <div class="btn_holder">
+        <button class="btn" id="return">Return To Dashboard</button>
+        </div>
+        </div>
+        <h3 class="title">Choose A Tag To Log Errors</h3>
+        <hr>
+        <div class="overflow_cont">
+         <div class="card_area" id="card_area"></div>
+         </div>
+ <!--       <div class="card">
+            <img class="img" src="calendar.png" alt="">
+            <h2 class="text_reg">| Maths Check</h2>
+        </div>
+        <br>  -->
+<!-- This is the region of the button to create new tags-->
+    <footer>
+        <div class="container" id="new_tag">
+    <button class="create"><h3 class="text_reg"> + Create New Study Tag </h3></button>
+    </div>
+    </footer>
+    </body>
+    <script>
+// variable initialisation area__________________________________________
+step=1;
+let id_num = localStorage.getItem('id_number')
+let tag_id = localStorage.getItem('tag_id')
+let count = Number( localStorage.getItem('tag_counter'+id_num));
+let delete_tag = Number(localStorage.getItem('del_tag'+id_num+tag_id))
+console.log(count)
+//_______________________________________________________________________
+while(step<=count){
+    if(localStorage.getItem('chapter'+id_num+step)!==null){
+    console.log('step: '+step)
+    console.log(localStorage.getItem('chapter'+id_num+step))
+    //br generation
+    let newBr=document.createElement('br')
+    document.getElementById('card_area').appendChild(newBr)
+     let newDiv =document.createElement('div')
+     newDiv.className='card'
+     document.getElementById('card_area').appendChild(newDiv)
+    //________________________________________________
+    newDiv.id=step
+      newDiv.addEventListener('click',function (){
+      console.log(this.id)
+      localStorage.setItem('tag_id',(this.id))})        /// this saves individual id of newly generated tag
+      newDiv.onclick=function(){
+            window.location.href='tester.html'
+        }
+    //__________________________________________________
+     // calendar photo generation
+     let newImg = document.createElement('img')
+     newImg.src='calendar.png'
+     newImg.className='img'
+     newDiv.appendChild(newImg)
+     //create chapter name
+     let newChap = document.createElement('h2')
+     newChap.className='text_reg'
+     newChap.textContent='| ' + localStorage.getItem('chapter'+id_num+step) + ': ' + localStorage.getItem('subject'+id_num+step)
+     newDiv.appendChild(newChap)
+    }
+    step++
+}
+
+if(delete_tag==1){
+    localStorage.setItem('del_tag',0)
+}
+//_______________________________________________________________________
+        document.getElementById('return').onclick=function(){
+            window.location.href="main student interface.html"
+        }
+        document.getElementById('new_tag').onclick=function(){
+            window.location.href='error_card_form.html'
+        }
+    </script>
+</html>

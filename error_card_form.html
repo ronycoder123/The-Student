@@ -1,0 +1,197 @@
+<html>
+    <style>
+        body{
+            background-image:url('https://w.wallhaven.cc/full/1j/wallhaven-1jlpq3.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .container{
+            animation-duration: 2s;
+            backdrop-filter: blur(10px);
+            border-radius:10px;
+            border:2px solid black;
+            width:50%;
+            display:block;
+            margin-right: auto;
+            margin-left: auto;
+            animation-fill-mode:forwards;
+        }
+        .text_reg{
+           color:rgb(230, 216, 216);
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+
+        }
+        .btn{
+            transition-duration: 0.2s;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            background:transparent;
+            border-radius:10px;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            padding:20px;
+            font-size:medium;
+            position:relative;
+        }
+        .parent{
+            display: flex;
+            gap:10px;
+            justify-content: space-between;
+            width:100%;
+        }
+        .btn_holder{
+            display: flex;
+            align-items: center;
+        }
+        .title_text{
+            backdrop-filter: blur(10px);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color:rgb(165, 85, 32);
+            display: inline-block;
+            font-size: 160%;
+            padding:5px;
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 20px;;
+            width:fit-content;
+        }
+        .cont{
+            display: flex;
+            gap:10px;
+        }
+        .UserInp{
+            color:white;
+            padding:10px;
+            border-radius: 10px;
+            background: transparent;
+            border:2px solid rgb(165, 85, 32);
+            display:block;
+            margin-right: auto;
+            margin-left:auto;
+            width:50%;
+            backdrop-filter: blur(20px);
+        }
+        .UserInp::placeholder{
+            color:white;
+        }
+        .btn_check{
+            color:white;
+            transition-duration:0.2s;
+            background:transparent;
+            padding:15px;
+            border:2px solid rgb(165, 85, 32);
+            border-radius:5px;
+            display: block;
+            margin-right: auto;
+            margin-left:auto;
+        }
+        .btn_check:hover{
+            border-color: rgb(16, 97, 219);
+        }
+        .btn:hover{
+            transform: translateY(-10px);
+              border:2px solid rgb(16, 97, 219);
+        }
+        @keyframes fadeout{
+            from{
+                opacity:1
+            }
+            to{
+                opacity:0
+            }
+        }
+    </style>
+    <body>
+        <div class="parent">
+        <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div>
+        <div class="btn_holder">
+        <button class="btn" id="return">Return To Tag Base</button>
+        </div>
+        </div>
+        <div class="container" id="container">
+            <h1 class="text_reg">Create Topic Tags</h1>
+            <hr>
+            <h3 class="text_reg" >Choose Your Subject:</h3>
+            <input id="subject" required type="text" placeholder="Enter Your Subject Name Here" class="UserInp">
+            <br>
+
+            <h3 class="text_reg">Choose Your Chapter:</h3>
+            <input id="chapter" required type="text" placeholder="Enter Your Chapter Name Here" class="UserInp">
+            <br>
+
+            <h3 class="text_reg">Is Your Chapter Tricky/ Difficult? (optional)</h3>
+            <button id="check_box" class="btn_check"></button>
+            <br>
+            <button class="btn_check" id="sub">Submit Form</button>
+        </div>
+        <script>
+            // initialising variables
+            //localStorage.clear()
+            let c_count =0;
+            let diff = 0
+            let checkBox = document.getElementById('check_box')
+            let sub = document.getElementById('sub')
+            let id_num = localStorage.getItem('id_number')
+            let count = Number(localStorage.getItem('tag_counter'+id_num))
+            let chapter = document.getElementById('chapter')
+            let subject = document.getElementById('subject')
+            let container=document.getElementById('container')
+            console.log(localStorage.getItem('tag_counter'+id_num))
+            checkBox.onclick=function(){
+                c_count++
+                if(c_count%2!=0){
+                    checkBox.style.backgroundImage="url('"+"tick_mark.png" +"')"
+                }
+                if(c_count%2==0){
+                    checkBox.style.backgroundImage='none'
+                }
+            }
+            sub.onclick=function(){
+                if(chapter.value.trim()==''){
+                    chapter.style.borderColor='red'
+                }
+                if(subject.value.trim()==''){
+                   subject.style.borderColor='red'
+                }
+                if(chapter.value.trim()!=''){
+                    chapter.style.borderColor='green'
+                }
+                if(subject.value.trim()!=''){
+                   subject.style.borderColor='green'
+                }
+
+                if(subject.style.borderColor=='green'){
+                if(chapter.style.borderColor=='green'){
+                    sub.disabled=true;
+        //_________________________________________________________________________
+            count++
+            localStorage.setItem('tag_counter'+id_num,count)
+            localStorage.setItem('chapter'+id_num+count,chapter.value.trim())
+            localStorage.setItem('subject'+id_num +count, subject.value.trim())
+             if(c_count!=2){
+                localStorage.setItem('status'+id_num+count,'difficult')
+             }
+             if(c_count==2){
+                localStorage.setItem('status'+id_num+count,'Managable')
+             }
+          //________________________________________________________________________
+
+                    container.style.animationName='fadeout'
+                    container.addEventListener('animationend',()=>{
+                       window.location.href='error log.html'
+                        console.log(localStorage.getItem('chapter'+id_num+count))
+                        console.log('subject'+id_num+count + ':' + localStorage.getItem('subject'+id_num+count))
+                         console.log('chapter'+id_num+count + ':' + localStorage.getItem('chapter'+id_num+count))
+                         console.log('status'+id_num+count + ':' + localStorage.getItem('status'+id_num+count))
+                    })
+                }
+            }
+            }
+    document.getElementById('return').onclick=function(){
+        window.location.href="error log.html"
+    }
+        </script>
+    </body>
+</html>

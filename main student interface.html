@@ -1,0 +1,225 @@
+<html>
+    <style>
+        body{
+            background-image: url('https://w.wallhaven.cc/full/n6/wallhaven-n63r8x.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        @keyframes fadein{
+            from{
+                opacity:0;
+                margin-right: 50px;
+                
+            }
+            to{
+                opacity:1;
+            }
+        }
+        @keyframes fade{
+            from{
+                opacity:0
+            }
+            to{
+                opacity:1
+            }
+        }
+        .greeting_text{
+            animation-name:fadein;
+            animation-duration: 1s;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size:250%;
+            text-align: center;
+            margin-top:20vh;
+            color:white;
+            border:2px solid;
+            border-color:rgb(165,85,32);
+            width: fit-content;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding:10px;
+        }
+        .container_name{
+            animation-timing-function: ease-in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .name{
+            color:rgb(16,97,219);
+            -webkit-text-stroke: 1px rgb(248, 248, 255);
+        }
+        .title_text{
+            backdrop-filter: blur(10px);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color:rgb(165, 85, 32);
+            display: inline-block;
+            font-size: 160%;
+            padding:5px;
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 20px;;
+            width:fit-content;
+        }
+        .text_reg{
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        .items{
+            display: flex;
+            align-items: center;
+            gap:10px;
+            justify-content: center;
+            border-radius: 10px;
+            flex-wrap:wrap;
+        }
+        .user_select{
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .cont1:hover{
+            transform: translateY(-10px);
+            backdrop-filter: blur(10px);
+            background-color: rgb(16,97,219);
+        }
+        .cont1{
+            transition-duration: 0.2s;
+            border:2px solid;
+            border-color:rgb(151, 59, 22);
+            padding:5px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius:10px;
+            backdrop-filter: blur(10px);
+        }
+        .img{
+            display: block;
+            margin-left:auto;
+            margin-right: auto;
+        }
+       .selec{
+                 animation-duration: 1s;
+            animation-fill-mode: forwards;
+            opacity:0;
+            min-width:40vh;
+            border:2px solid rgb(165,85,32);
+            backdrop-filter: blur(5px);
+            width:fit-content;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            padding:5px;
+            border-radius:10px;
+       }
+       .parent{
+            display: flex;
+            gap:10px;
+            justify-content: space-between;
+            width:100%;
+        }
+        .btn_holder{
+            display: flex;
+            align-items: center;
+        }
+        .btn{
+            transition-duration: 0.2s;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            background:transparent;
+            border-radius:10px;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            padding:20px;
+            font-size:medium;
+            position:relative;
+        }
+        .btn:hover{
+            transform: translateY(-10px);
+              border:2px solid rgb(16, 97, 219);
+        }
+    </style>
+    <body>
+     <!--   <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div> -->
+        <div class="parent">
+        <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div>
+        <div class="btn_holder">
+        <button class="btn" id="return">Return To Accounts</button>
+        </div>
+        </div>
+        <div class="container_name">
+        <h1 id="gt" class="greeting_text">Welcome Back <i class="name" id="name"></i> !</h1>
+        </div>
+        <div class="selec" id="selec">
+            <h3 class="text_reg"> So, What will you be doing today?</h3>
+            <div class="items" id="items"> <!-- so this will be where our cards will be... the pomodoro for all users, erro logs and carelessness index are unique to users :)-->
+                <div class="cont1" id="pomodoro">
+             <img class="img" src="https://img.icons8.com/?size=30&id=60007&format=png" >
+             <h4 class="text_reg">Pomodoro</h4>
+             </div>
+
+
+            <div class="cont1" id="log">
+             <img class="img" src="https://img.icons8.com/?size=24&id=84997&format=png" >
+             <h4 class="text_reg">Error Logs</h4>
+             </div>
+
+
+       <!--     <div class="cont1">
+             <img class="img" src="https://img.icons8.com/?size=24&id=85799&format=png" >
+             <h4 class="text_reg">80/20 session</h4>
+             </div> -->
+
+            <div class="cont1" id="modify">
+             <img class="img" src="https://img.icons8.com/?size=30&id=59996&format=png" >
+             <h4 class="text_reg">Modify Account</h4>
+             </div>
+            </div>
+            </div>
+    </body>
+    <script>
+        id_num = localStorage.getItem('id_number')
+         val_pomodoro = Number(localStorage.getItem('pomodoro'+ id_num))
+         val_err_log = Number(localStorage.getItem('log'+ id_num))
+         console.log('Username: ' + 'pomodoro'+ id_num )  // this is the unique username for the pomodoro timer. checks how many time user has opened it 
+        let name =localStorage.getItem('User'+ id_num)
+        console.log(id_num)
+        console.log(name)
+        document.getElementById('name').textContent=(name)
+        // we need to start fade of the main dash after the greeting text fades in
+        document.getElementById('gt').addEventListener('animationend',()=>{
+            document.getElementById('selec').style.animationName='fade'
+        })
+//__________________________________________________________________________________________________
+// this is the function that will iterate from 0 to higher with d=1 every time the card is pressed ;. 1 = new , >1 means old
+        document.getElementById('pomodoro').onclick=function(){ 
+            val_pomodoro++
+           // console.log('iteration: '+val)
+            localStorage.setItem('pomodoro'+id_num, val_pomodoro)
+            console.log(localStorage.getItem('pomodoro'+id_num))
+            window.location.href='examplecoderunnerfile.html'
+        }
+
+        document.getElementById('log').onclick=function(){ 
+            val_err_log++
+           // console.log('iteration: '+val)
+            localStorage.setItem('log'+id_num, val_err_log)
+            console.log(localStorage.getItem('log'+id_num))
+            if(localStorage.getItem('log'+id_num)<=1){
+            window.location.href='error_log_intro.html'
+            }
+            if(localStorage.getItem('log'+id_num)>1){
+            window.location.href='error log.html'
+            }
+        }
+        document.getElementById('modify').onclick=function(){
+            window.location.href="acct_settings.html"
+        }
+        document.getElementById('return').onclick=function(){
+        window.location.href="the student.html"
+    }
+    </script>
+</html>

@@ -1,0 +1,281 @@
+<html>
+    <title>Login Form</title>
+    <style>
+        @keyframes fadein {
+            from{
+                opacity:0;
+                transform: translateY(30px);
+            }
+            to{
+                opacity:1;
+            }
+        }
+        @keyframes out{
+            from{
+                opacity:1;
+            }
+            to{
+                opacity:0;
+            }
+        }
+        @keyframes justfade{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+        .title_text{
+            backdrop-filter: blur(10px);
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color:rgb(165, 85, 32);
+            display: inline-block;
+            font-size: 160%;
+            padding:5px;
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 20px;;
+            width:fit-content;
+        } 
+
+
+        body{
+            background-image: url('https://w.wallhaven.cc/full/5d/wallhaven-5d6gj9.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .bottom_text{
+            text-align: center;
+            display: block;
+            color:white;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         position: fixed;
+  bottom: 0;
+  width:100%;
+        }
+        .form{
+            opacity:0;
+             animation-name: fadein;
+             animation-duration: 0.8s;
+             margin-top:-20px;
+             animation-delay: 2s;
+            text-align: center;
+            display:block;
+            margin-right:auto;
+            margin-left:auto;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            border-radius:20px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height:auto;
+            width:min(700px,90%); 
+        }
+        .text_class{
+            color:rgb(29, 28, 28);
+            border:2px solid white;
+            width:fit-content;
+            display: block;
+            padding:10px;
+            border-radius:10px;
+            background-color: white;
+            margin-right:auto;
+            margin-left:auto;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .inps{
+            display: block;
+            margin-right:auto;
+            margin-left:auto;
+            padding:10px;
+            width:min(400px,80%);
+            border:2px solid;
+            border-radius:10px;
+        }
+        .text_reg{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color:rgb(165, 85, 32);
+            animation-duration: 2s;
+            animation-name:none
+        }
+        .submit{
+            color:rgb(44, 43, 43);
+            background-color:azure;
+            padding:10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border:2px solid white;
+            border-radius: 5px;;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-out;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .submit:hover{
+            background-color:rgb(165, 85, 32);
+            color:white;
+            transform: translateY(-5px);
+        }
+        .tempcodes{
+            animation-name:none;
+            animation-duration:2s;
+        }
+    </style>
+    <body>
+        <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div>
+        <div class="form" id="form">
+            <h3 class="text_class" id="txt">Sign Up Form</h3>
+            <div id="tempcodes" class="tempcodes">
+            <h3 class="text_reg">Enter Your Name In The Box Below: First Name </h3>
+            <input type="text" id="inp1" class="inps" maxlength="10"  placeholder="Enter Your Name Here: Add Your Username" required>
+            <h3 class="text_reg">Enter Your Most Hated Subject In The Box Below: </h3>
+            <input type="text" id="inp2" class="inps" placeholder="Enter Your Hated Subject" required>
+           <h3 class="text_reg">Please Enter Your Class</h3>
+          <!-- <h3 class="text_reg"><b style="color:brown">Write Your Passwords Sensibly</b></h3> -->
+            <input type="number" id="inp3" class="inps" placeholder="Class here:" required> 
+            <h3 class="text_reg">Provide Your Profile Photo Web Link</h3>
+            <input type="text" class="inps" id="inp4" placeholder="Place The `https://` Links Here:" required>
+            <br>
+            <button class="submit" id="sub">Submit Details</button>
+            </div>
+            <hr>
+            <h3 class="text_reg" id="reg">Registration Forms: <b style="color:white">Made Easy!</b></h3>
+        </div>
+        <h3 class="bottom_text">Empowering student learning through <b style="color:rgb(165, 85, 32);backdrop-filter: blur(10px);">"experiences and logs"</b></h3>
+    
+    
+    
+    <script>
+        //localStorage.setItem('count',-1)  // <--- use this to reset count for testing (1/2)
+      //localStorage.clear()
+        //_______________________________________________________________________
+        // localstorage initialisation:
+        let count=Number(localStorage.getItem('count'))
+        console.log('count value: '+String(count))
+        
+        //_______________________________________________________________________
+        document.getElementById('form').addEventListener('animationend',()=>{
+            document.getElementById('form').style.opacity=1;
+        })
+
+
+
+        let btn1 = document.getElementById('inp1');
+        let btn2 = document.getElementById('inp2');
+        let btn3 = document.getElementById('inp3');
+        let btn4 = document.getElementById('inp4')
+        let form = document.getElementById('form')
+        document.getElementById('sub').onclick = function(){
+            // this check is to ensure that all the boxes are filled. screw the default. we make originals here 
+         // this is testing the new iterator command
+
+           if (btn1.value.trim() ==""){
+            btn1.style.borderColor='red';
+           }
+           if (btn1.value.trim() !=""){
+            btn1.style.borderColor='green';
+           }
+           if(btn2.value.trim() ==""){
+            btn2.style.borderColor='red';
+           }
+           if(btn2.value.trim() !=""){
+            btn2.style.borderColor='green';
+           }
+           if(btn3.value.trim() ==""){
+            btn3.style.borderColor='red';
+           }
+           if(btn3.value.trim() !=""){
+            btn3.style.borderColor='green';
+           }
+           if(btn4.value.trim() ==""){
+            btn4.style.borderColor='red';
+           }
+           if(btn4.value.trim() !=""){
+            btn4.style.borderColor='green';
+           } 
+           let iterator=0;
+        console.log('iterator value: ',+String(iterator))
+           while (iterator < count){
+            console.log(iterator)
+            console.log(localStorage.getItem('User'+String(iterator)))
+            if (btn1.value.trim() === localStorage.getItem('User'+String(iterator))){
+                console.log('Yes ITS A MATCH')
+                btn1.style.borderColor='red'
+            }
+            iterator++;
+        }
+        // if all the boxes are filled: the following conditions will trigger:
+
+           if(btn1.style.borderColor=='green'){
+            if(btn2.style.borderColor=='green'){
+                if(btn3.style.borderColor=='green'){
+                   if(btn4.style.borderColor=='green'){
+                    document.getElementById('sub').disabled=true
+                    // once all the boxes turn green(are filled), then we begin storing the data
+                   //__________________________________________________________
+                    /* OK.. there are multiple ways to do this.. Lets do it MY WAY:
+                    1) => we have a step counter(need not be added to localstoragre) that iterates from 1 to infinity var++ every time submit clicked;
+
+                    2)=> we then concatenate it into the string that will be our variable that will store our data👍🏼.
+
+                    3)=>then wire the system into our login selector....Done
+
+                    APPROVAL NOTICE STATUS: _____APPROVED______
+                    */
+                   // code section for the localstorage:
+                   localStorage.setItem('User'+ String(count),btn1.value.trim())
+                   localStorage.setItem('class'+String(count),btn2.value)
+                   localStorage.setItem('HatedSub'+String(count),btn3.value.trim())
+                   localStorage.setItem('pfp'+String(count),btn4.value.trim())
+                   //_____________________________________________________________
+                   //checks for localstorage
+                   console.log(localStorage.getItem('User'+ String(count)))
+                   console.log(localStorage.getItem('class'+String(count)))
+                   console.log(localStorage.getItem('HatedSub'+String(count)))
+                   console.log(localStorage.getItem('pfp'+String(count)))
+                   //____________________________________________________________
+                   count++;
+                   localStorage.setItem('count',count)  //<------ continue regular localstroage (2/2)
+                    //____________________________________________________
+                    // animations to fade out of the screen(commentised😭)
+                   document.getElementById('tempcodes').style.animationName='out';
+                    document.getElementById('reg').style.animationName='out' 
+                    //--------------------------------------------
+
+                    // the animation end of the fade out sequence will create a new image with the confirmed logo and a message
+                    document.getElementById('tempcodes').addEventListener('animationend',()=>{
+                        document.getElementById('reg').textContent='Registration Was Successful'
+                        document.getElementById('reg').style.color='white'
+                        document.getElementById('tempcodes').remove();
+                         let img = document.createElement('img');
+                         document.getElementById('form').appendChild(img);
+
+                         // setting attributes to the newly created image element with an animationName,duration,width and height(strictly set, might be a problem) and a basic fade animation called : justfade
+                         img.src='confirmed.png';
+                         img.id='tempcodes'
+                         img.style.width='200px';
+                         img.style.animationDuration='2s'
+                         img.style.height='200px';
+                         img.style.opacity=0; 
+                         img.style.animationName='justfade'
+                         document.getElementById('reg').style.animationName='justfade'
+                         img.addEventListener('animationend',()=>{
+                            // set new parameters for the message and the image element
+                            img.style.opacity=1;
+                            window.location.href='the student.html'
+
+                         })
+                })
+                        //window.location.href='Student Login Account Selector.html' 
+                    
+                } 
+            }
+           }
+        }
+        }
+    </script>
+    </body>
+
+</html>
