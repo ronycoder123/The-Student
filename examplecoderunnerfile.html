@@ -1,0 +1,630 @@
+
+<html>
+    <style>
+        body{
+            background-image: url("https://w.wallhaven.cc/full/4x/wallhaven-4xvrmz.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation-name: none;
+            animation-fill-mode: forwards;
+            animation-duration:2s;
+        }
+        .title_text{
+            backdrop-filter: blur(10px);
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color:rgb(165, 85, 32);
+            display: inline-block;
+            font-size: 160%;
+            padding:5px;
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 20px;;
+            width:fit-content;
+        }
+        .main_display{
+            color:white;
+            font-size: 15vh;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            border:2px solid rgb(165, 85, 32);
+            backdrop-filter: blur(10px);
+            width:fit-content;
+            padding:10px;
+            border-radius:20px;
+            -webkit-text-stroke: 2px rgb(16, 97, 219);
+        }
+        .timer_module{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+         .cont1{
+            transition-duration: 0.2s;
+            border:2px solid;
+            border-color:rgb(151, 59, 22);
+            padding:5px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius:10px;
+            backdrop-filter: blur(10px);
+        }
+        .text_reg{
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        .items{
+            display: block;
+            margin-top:5px;
+            border-radius: 10px;
+            flex-wrap:wrap;
+        }
+        .container{
+            position: fixed;
+            width:fit-content;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(151, 59, 22);
+            border-radius: 10px;
+            padding:10px;
+            display: block;
+            top:50%;
+            transform: translateY(-50%);
+        }
+        .container_settings{
+            width:fit-content;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(151, 59, 22);
+            border-radius: 10px;
+            padding:10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .items_settings{
+            
+            display: flex;
+            gap:10px;
+            border-radius: 10px;
+            flex-wrap:wrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .cont1:hover{
+            transform: translateY(-5px);
+        }
+        .above_text{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            color:white
+        }
+        .vertical_container{
+            display:flex;
+         }
+        .ambient_selection{
+            position: fixed;
+         height:auto;
+         width:fit-content;
+            padding:10px;
+            border:2px solid rgb(250, 249, 249);
+            border-radius: 10px;
+            top: 50%;
+            right:0;
+            transform: translateY(-50%);
+        }
+        .btn{
+            transition-duration: 0.2s;
+            backdrop-filter: blur(10px);
+            border:2px solid rgb(165, 85, 32);
+            background:transparent;
+            border-radius:10px;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+            padding:20px;
+            font-size:medium;
+            position:relative;
+        }
+        .parent{
+            display: flex;
+            gap:10px;
+            justify-content: space-between;
+            width:100%;
+        }
+        .btn_holder{
+            display: flex;
+            align-items: center;
+        }
+        .btn:hover{
+            transform: translateY(-10px);
+              border:2px solid rgb(16, 97, 219);
+        }
+        @keyframes blink{
+            0%{
+                opacity:0;
+            }
+            50%{
+                opacity:1
+            }
+            100%{
+                opacity:0
+            }
+        }
+        @media (max-height: 700px) {
+    .ambient_selection{
+        top: 70%;
+    }
+}
+ @media (max-height: 700px) {
+    .container{
+        top: 70%;
+    }
+}
+@keyframes good_job{
+
+    50%{
+        background-color: rgb(165, 85, 32);
+    }
+}
+
+    </style>
+    <body id="body">
+    <!--    <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div> -->
+    <div class="parent">
+        <div class="cont">
+        <h1 class="title_text"><b style="color:rgb(16, 97, 219)">.The </b>Student</h1>
+        </div>
+        <div class="btn_holder">
+        <button class="btn" id="return">Return To Dashboard</button>
+        </div>
+        </div>
+<!--Now this will be the dash for the ambient sounds-->
+<div class="container">
+    <div class="items">
+        <h3 class="text_reg">Your Stats</h3>
+         <div class="cont1"  style="border-color: rgb(241, 239, 239);">
+             <h3 class="text_reg" id="break"></h3>
+             <h4 class="text_reg" >Sessions Completed</h4>
+         </div>
+         <br>
+
+         <div id="mins" class="cont1"  style="border-color:rgb(231, 236, 231);animation-name: none;animation-iteration-count: 4;animation-duration: 1s;">
+             <h3 class="text_reg" id="minutes_passed"></h3>
+             <h4 class="text_reg" id="mins_text">Minutes Studied</h4>
+             <h4 class="text_reg" id="reader_text">Cumulative [1/2]</h4>
+         </div>
+         <br>
+         <div class="cont1"  style="border-color:rgb(226, 235, 226);">
+             <h3 class="text_reg" style="animation-name: none;animation-duration:1s;animation-iteration-count: infinite;"  id="mode"></h3>
+             <h4 class="text_reg" >Timer Mode</h4>
+         </div>
+
+
+         </div>
+         </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------->
+
+<div class="timer_module">
+            <h1 class="main_display" id="m_d"></h1>
+        </div>
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<div class="container_settings">
+        <div class="items_settings">
+         <div class="cont1" id="timr">
+             <img id="state_btn" class="img"  src="https://img.icons8.com/?size=24&id=85077&format=png" >
+             <h4 class="text_reg" id="t_r">Start Timer</h4>
+         </div>
+
+
+         <div class="cont1" id="reset">
+             <img class="img" src="https://img.icons8.com/?size=24&id=86209&format=png" >
+             <h4 class="text_reg">Reset Timer</h4>
+         </div>
+
+         <div class="cont1" id="session">
+             <img class="img" src="https://img.icons8.com/?size=24&id=86560&format=png" >
+             <h4 class="text_reg" id="mode_text">Pomodoro Mode</h4>
+         </div>
+
+         </div>
+         </div>
+<!-------------------------------------------------------------------------------------------------------------------------------------------->
+<audio id="sound"  hidden></audio>
+<audio id="ambience" loop hidden ></audio>
+<audio loop hidden id="lofi_ambience"></audio>
+<audio loop hidden id="keyb_ambience"></audio>
+<audio loop hidden id="n_ambience"></audio>
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
+<!--this is where my stats timer was-->
+<!--                         ------------------------------------------------------------->
+<div class="vertical_container"></div>
+    <div class="ambient_selection">
+        <h3 class="text_reg">Ambient Sounds</h3>
+
+        <div class="cont1" id="lofi">
+             <img id="state" class="img" src="https://img.icons8.com/?size=30&id=121115&format=png" >
+             <h4 class="text_reg" >Lofi Beats</h4>
+         </div>
+         <br>
+
+
+        <div class="cont1" id="rain">
+             <img id="state" class="img" src="https://img.icons8.com/?size=30&id=z0MKBevKlLDG&format=png" >
+             <h4 class="text_reg" >Rainfall</h4>
+         </div>
+         <br>
+         <div class="cont1" id="noise">
+             <img id="state" class="img" src="https://img.icons8.com/?size=30&id=60998&format=png" >
+             <h4 class="text_reg" >Thunder Rumble</h4>
+         </div>
+
+          <br>
+         <div class="cont1" id="keyboard">
+             <img id="state" class="img" src="https://img.icons8.com/?size=30&id=60677&format=png" >
+             <h4 class="text_reg" >Keyboard</h4>
+            <br>
+         </div>
+
+    </div>
+   </div>
+<!--_______________________________________________________________________________________-->
+        <script>
+            // this initialises all the values needed. including the timer, mode and break count
+            id_num = localStorage.getItem('id_number')
+            //initialising localstorage for sec and min:
+            let sec = Number(localStorage.getItem('sec'+id_num))
+            let min =Number( localStorage.getItem('min'+id_num))
+            let mode  = localStorage.getItem('mode'+id_num)
+            let minutes_studied = Number( localStorage.getItem('minutes_studied'+id_num))
+            let count_break = Number(localStorage.getItem('break_count'+id_num))
+            let daily_min_count = Number(localStorage.getItem('daily_count'+id_num))
+            let session_mode_number = Number(localStorage.getItem('session_mode'+id_num))
+            document.getElementById('mode').textContent=mode
+            document.getElementById('break').textContent=count_break
+            document.getElementById('minutes_passed').textContent=minutes_studied
+            let step = -1;
+            let counter=0;
+            //ambience counts initialises here
+            let rain_count=0;
+            let lofi_count=0;
+            let keyboard_count=0;
+            let noise_count=0;
+            let temp_duration =0 
+            let min_mode_checker = 0;
+            let minutes_counted_bugfix = 0
+        //_________________________________________
+            let timer;
+            let hours;
+            let minutes;
+//this is to initialise the background and text:
+if(session_mode_number%2!=0){
+    document.getElementById('mode_text').textContent='80/20 Mode'
+    document.getElementById('body').style.backgroundImage="url('"+"https://w.wallhaven.cc/full/5d/wallhaven-5dyk65.jpg" +"')"
+}
+// this function is for the timer to iterate again, once the old timer has been destroyed, this will take its place🙂
+function Timer(){
+  timer = setInterval(() => {
+               console.log(mode)
+                sec--
+            //__________________________________________________________________________________
+            // these are the different modes that the timer can take and it all depends on whether the timer has crossed certain parameters
+                
+            if(mode=='break'){
+                document.getElementById('mode').style.animationName='blink'
+            }
+            // this is for study mode timer for 25 mins if mode is pomodoro
+                if(min==0){
+                    if(sec==0){
+                        if(mode=='break'){
+                            if(session_mode_number%2==0){
+                             document.getElementById('mode').style.animationName='none' 
+                            mode='study'
+                            localStorage.setItem('mode'+id_num,'study')
+                            document.getElementById('sound').src="timer_study.mp3"
+                            document.getElementById('sound').play()
+                            min=25;
+                            sec=0;
+                            }
+                            // if mode is 80/20, then the timer resets to 80 instead of 25
+                            if(session_mode_number%2!=0){
+                             document.getElementById('mode').style.animationName='none' 
+                            mode='study'
+                            localStorage.setItem('mode'+id_num,'study')
+                            document.getElementById('sound').src="timer_study.mp3"
+                            document.getElementById('sound').play()
+                            min=80;
+                            sec=0;
+                            }
+                        }
+                    }
+                }
+                // this is break mode for 5 mins
+                if(min==0){
+                    if(sec==0){
+                        if(mode=='study'){
+                            if(session_mode_number%2==0){
+                            count_break++
+                            localStorage.setItem('break_count'+id_num,count_break)
+
+                            document.getElementById('sound').src="timer_break.mp3"
+                            document.getElementById('sound').play()
+                         min=5;
+                        sec=0;     // TWEAK THE TIMES PROPERLY
+                        mode='break'
+                        localStorage.setItem('mode'+id_num,'break')
+                        }
+                        
+                        //now if mode is 80-20, then 20 minutes break will be given instead of 5
+                        if(session_mode_number%2!=0){
+                            count_break++
+                            localStorage.setItem('break_count'+id_num,count_break)
+
+                            document.getElementById('sound').src="timer_break.mp3"
+                            document.getElementById('sound').play()
+                         min=20;
+                        sec=0;     
+                        mode='break'
+                        localStorage.setItem('mode'+id_num,'break')
+                        }
+                    }
+                    }
+
+                // tjis increments the minute by one when second sreaches 59 so that seconds go to 90 or 100 :)
+             /*    */
+                }
+                if(sec<0){
+                    if (min==25){
+                        minutes_studied--
+                    }
+                    min--;
+                    sec=59;
+                    if (mode=='study'){
+                        minutes_studied++
+                      //  temp_duration++
+                        daily_min_count++
+                        document.getElementById(localStorage.setItem('daily_count'+id_num, daily_min_count))
+                    // this changes the data displayed according to the  mode the user is in
+                     localStorage.setItem('minutes_studied'+id_num,minutes_studied)
+                     if(min_mode_checker%2!=0){
+                        document.getElementById('minutes_passed').textContent=daily_min_count
+                        document.getElementById('reader_text').textContent='Since Opened [2/2]'
+                     }
+                     if(min_mode_checker%2==0){
+                        document.getElementById('minutes_passed').textContent=minutes_studied
+                     document.getElementById('reader_text').textContent='Cumulative [1/2]'
+                     }
+                 }
+                }
+
+    //________________________________________________
+    // this module collects hours and minutes while the timer is running
+        let now = new Date();
+
+        let hours = now.getHours();   // this is the new snippet✨🧐🧐😭😭😤😤😤😤😂
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds()
+        console.log('hours:'+hours)
+        console.log('minutes: '+minutes)
+        console.log('mode_checker:' + min_mode_checker)
+    //____________________________________________________
+    //this causes the div to blink orange whenever the timer crosses 12:00pm
+        if (hours==0){
+        if(minutes ==0){
+           if(seconds<=11){
+         document.getElementById('minutes_passed').textContent=daily_min_count
+        document.getElementById('reader_text').textContent='Since Opened [2/2]'
+        document.getElementById('mins').style.animationName='good_job'
+         document.getElementById('mins').addEventListener('animationend',()=>{
+            daily_min_count=0
+            localStorage.setItem('daily_count'+id_num,0)
+        })
+        }
+    }
+    }
+            // this is the main display area! this is what is displayed on urr screen when u open it
+               localStorage.setItem('min'+ id_num, min)
+               localStorage.setItem('sec'+ id_num, sec)
+               console.log(localStorage.getItem('min'+id_num))
+               console.log(localStorage.getItem('sec'+id_num))
+               document.getElementById("m_d").textContent =String(localStorage.getItem('min'+id_num)).padStart(2,"0") + ":" +(localStorage.getItem('sec'+id_num)).padStart(2,"0");
+               document.getElementById('mode').textContent= mode
+               document.getElementById('break').textContent= count_break;
+            }, 1000);
+        }
+    //_______________________________________________________________________________________________
+    // timer button logic
+    document.getElementById('timr').onclick=function(){
+        step++
+        if (step%2!=0){
+            document.getElementById('t_r').textContent='Timer Paused'
+            document.getElementById('state_btn').src="https://img.icons8.com/?size=24&id=85932&format=png"
+            clearInterval(timer)
+        }
+        else{
+            document.getElementById('t_r').textContent='Pause Timer'
+            document.getElementById('state_btn').src="https://img.icons8.com/?size=24&id=85165&format=png"
+            Timer()
+        }
+    }
+
+//_______________________________________________________________________________________________________
+// for minutes studied
+document.getElementById('mins').onclick=function(){
+    min_mode_checker++
+    if(min_mode_checker%2!=0){
+        document.getElementById('minutes_passed').textContent=daily_min_count;
+        document.getElementById('reader_text').textContent='Since Opened [2/2]'
+    }
+    if(min_mode_checker%2==0){
+        document.getElementById('minutes_passed').textContent=minutes_studied
+        document.getElementById('reader_text').textContent='Cumulative [1/2]'
+    }
+}
+//____________________________________________________________________________________________________
+    
+    //_____________________________________________________________________________________________
+    // clicking 'reset' pauses the timer, breaks the old one and rebuilds a new one
+   document.getElementById('reset').onclick=function(){
+    // this is the regular pomodoro session when session mode is even
+    if(session_mode_number%2==0){
+    document.getElementById('m_d').textContent=String(("25".padStart(2,"0")) + ":" +("0".padStart(2,"0")));
+    clearInterval(timer)
+    min=25
+    sec=0
+    step=-1;
+    localStorage.setItem('min'+id_num,25)
+    localStorage.setItem('sec'+id_num,0)
+    document.getElementById('state_btn').src="https://img.icons8.com/?size=24&id=85077&format=png"
+    document.getElementById('t_r').textContent='Start Timer'
+    }
+    // this is 80-20 mode when session_mode is odd
+    if(session_mode_number%2!=0){
+    document.getElementById('m_d').textContent=String(("80".padStart(2,"0")) + ":" +("0".padStart(2,"0")));
+    clearInterval(timer)
+    min=80
+    sec=0
+    step=-1;
+    localStorage.setItem('min'+id_num,80)
+    localStorage.setItem('sec'+id_num,0)
+    document.getElementById('state_btn').src="https://img.icons8.com/?size=24&id=85077&format=png"
+    document.getElementById('t_r').textContent='Start Timer'
+    }
+
+   }
+//_______________________________________________________________________________________________
+//checking session mode between 'pomodoro' and '80-20' here:
+
+document.getElementById('session').onclick=function(){
+    session_mode_number++
+    localStorage.setItem('session_mode'+id_num,session_mode_number)
+    console.log(session_mode_number)
+    if(session_mode_number%2==0){
+    document.getElementById('mode_text').textContent='Pomodoro Mode'
+    document.getElementById('body').style.backgroundImage="url('"+"https://w.wallhaven.cc/full/4x/wallhaven-4xvrmz.jpg" +"')"
+    document.getElementById('m_d').textContent=String(("25".padStart(2,"0")) + ":" +("0".padStart(2,"0")));
+    clearInterval(timer)
+    min=25
+    sec=0
+    step=-1;
+    localStorage.setItem('min'+id_num,25)
+    localStorage.setItem('sec'+id_num,0)
+    document.getElementById('state_btn').src="https://img.icons8.com/?size=24&id=85077&format=png"
+    document.getElementById('t_r').textContent='Start Timer'
+    //https://w.wallhaven.cc/full/5d/wallhaven-5dyk65.jpg <--
+}
+
+if(session_mode_number%2!=0){
+    document.getElementById('mode_text').textContent='80/20 Mode'
+    document.getElementById('body').style.backgroundImage="url('"+"https://w.wallhaven.cc/full/5d/wallhaven-5dyk65.jpg" +"')"
+    document.getElementById('m_d').textContent=String(("80".padStart(2,"0")) + ":" +("0".padStart(2,"0")));
+    clearInterval(timer)
+    min=80
+    sec=0
+    step=-1;
+    localStorage.setItem('min'+id_num,80)
+    localStorage.setItem('sec'+id_num,0)
+    document.getElementById('state_btn').src="https://img.icons8.com/?size=24&id=85077&format=png"
+    document.getElementById('t_r').textContent='Start Timer'
+    //https://w.wallhaven.cc/full/5d/wallhaven-5dyk65.jpg <--
+}
+}
+//________________________________________________________________________________________________
+// this detects whether the account is new or not
+if(localStorage.getItem('pomodoro'+id_num) <=1){
+    min=25
+    sec=0
+    mode='study';
+    localStorage.setItem('min'+id_num,25)
+    localStorage.setItem('sec'+id_num,0)
+    step=-1
+    count_break=0
+    localStorage.setItem('break_count'+id_num,0)
+    localStorage.setItem('mode'+id_num,'study')
+    localStorage.setItem('session_mode'+id_num,0)
+    document.getElementById('mode_text').textContent='Pomodoro Mode'
+}
+//___________________________________________________________________________________________________
+// welcome to the ambient sounds code workplace :)
+// rainfall code :)
+document.getElementById('rain').onclick=function(){
+    rain_count++
+    console.log(rain_count)
+    if(rain_count%2!=0){
+        document.getElementById('rain').style.borderColor="rgb(16,97,219)"
+                    document.getElementById('ambience').src='rainfall.wav'
+                    document.getElementById('ambience').volume = 0.2
+                    document.getElementById('ambience').play()
+
+                }
+    if(rain_count%2==0){
+        document.getElementById('rain').style.borderColor="rgb(165,85,32)"
+                    document.getElementById('ambience').src='none'
+                }
+            }
+//lofi beats
+document.getElementById('lofi').onclick=function(){
+    lofi_count++
+    console.log(lofi_count)
+    if(lofi_count%2!=0){
+        document.getElementById('lofi').style.borderColor="rgb(16,97,219)"
+                    document.getElementById('lofi_ambience').src='lofi_beats.mp3'
+                    document.getElementById('lofi_ambience').volume = 0.2
+                    document.getElementById('lofi_ambience').play()
+
+                }
+    if(lofi_count%2==0){
+        document.getElementById('lofi').style.borderColor="rgb(165,85,32)"
+                    document.getElementById('lofi_ambience').src='none'
+                }
+            }
+//keyboard tapping
+document.getElementById('keyboard').onclick=function(){
+    keyboard_count++
+    console.log(keyboard_count)
+    if(keyboard_count%2!=0){
+        document.getElementById('keyboard').style.borderColor="rgb(16,97,219)"
+                    document.getElementById('keyb_ambience').src='keyboard.mp3'
+                    document.getElementById('keyb_ambience').volume = 0.2
+                    document.getElementById('keyb_ambience').play()
+
+                }
+    if(keyboard_count%2==0){
+        document.getElementById('keyboard').style.borderColor="rgb(165,85,32)"
+                    document.getElementById('keyb_ambience').src='none'
+                }
+            }
+// Thunder Rumble
+document.getElementById('noise').onclick=function(){
+    noise_count++
+    console.log(noise_count)
+    if(noise_count%2!=0){
+        document.getElementById('noise').style.borderColor="rgb(16,97,219)"
+                    document.getElementById('n_ambience').src='thunder.mp3'
+                    document.getElementById('n_ambience').volume = 0.2
+                    document.getElementById('n_ambience').play()
+
+                }
+    if(noise_count%2==0){
+        document.getElementById('noise').style.borderColor="rgb(165,85,32)"
+                    document.getElementById('n_ambience').src='none'
+                }
+            }
+    document.getElementById('return').onclick=function(){
+        window.location.href="main student interface.html"
+    }
+//________________________________________________________________________________________________
+// this is what initially opens up everytime u open up the pomodoro
+
+document.getElementById('m_d').textContent=String(Number(localStorage.getItem('min'+id_num))).padStart(2,"0") + ":" +String(Number(localStorage.getItem('sec'+id_num))).padStart(2,"0");
+      </script>
+    </body>
+</html>
