@@ -475,6 +475,9 @@ document.getElementById('mins').onclick=function(){
     //_____________________________________________________________________________________________
     // clicking 'reset' pauses the timer, breaks the old one and rebuilds a new one
    document.getElementById('reset').onclick=function(){
+       mode='study'                // THIS IS THE SNIPPET I ADDED TO THE CODE PLS CHANGE IF WRONG 🚨🚨
+    localStorage.setItem('mode'+id_num,'study')
+    document.getElementById('mode').textContent=mode
     // this is the regular pomodoro session when session mode is even
     if(session_mode_number%2==0){
     document.getElementById('m_d').textContent=String(("25".padStart(2,"0")) + ":" +("0".padStart(2,"0")));
@@ -509,6 +512,7 @@ document.getElementById('session').onclick=function(){
     localStorage.setItem('session_mode'+id_num,session_mode_number)
     mode='study'                // THIS IS THE SNIPPET I ADDED TO THE CODE PLS CHANGE IF WRONG
     localStorage.setItem('mode'+id_num,'study')
+    document.getElementById('mode').textContent=mode
     console.log(session_mode_number)
     if(session_mode_number%2==0){
     document.getElementById('mode_text').textContent='Pomodoro Mode'
