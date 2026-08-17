@@ -508,7 +508,7 @@ document.getElementById('session').onclick=function(){
     session_mode_number++
     localStorage.setItem('session_mode'+id_num,session_mode_number)
     mode='study'                // THIS IS THE SNIPPET I ADDED TO THE CODE PLS CHANGE IF WRONG
-    localstorage.setItem('mode'+id_num,'study')
+    localStorage.setItem('mode'+id_num,'study')
     console.log(session_mode_number)
     if(session_mode_number%2==0){
     document.getElementById('mode_text').textContent='Pomodoro Mode'
